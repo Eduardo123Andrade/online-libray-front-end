@@ -1,0 +1,20 @@
+.Container {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    border: 1px solid #000;
+}
+
+.Image {
+    display: flex;
+    border: 1px solid #000;
+    margin: 5px;
+    max-height: 100px;
+}
+
+.About {
+    border: 1px solid #000;
+    margin-left: 10px;
+    padding: 5px;
+    margin: 5px;
+}

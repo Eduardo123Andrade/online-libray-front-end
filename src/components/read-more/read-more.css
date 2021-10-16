@@ -1,0 +1,13 @@
+.Text{
+    display: inline;
+    width: 100%;
+  }
+
+  .read-or-hide{
+    color: blue;
+    cursor: pointer;
+  }
+
+  .read-or-hide:hover {
+    text-decoration: underline;
+  }

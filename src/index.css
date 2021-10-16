@@ -1,0 +1,10 @@
+.App {
+    /* background-color: black; */
+    height: 100vw;
+}
+
+
+body {
+    background-color: blueviolet;
+    overflow: hidden;
+}

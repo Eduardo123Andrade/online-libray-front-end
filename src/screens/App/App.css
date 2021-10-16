@@ -1,0 +1,7 @@
+.App {
+    display: flex;
+    margin: -10px;
+    height: 100vmax;
+    max-height: 100vmax;
+    min-height: 100vmax;
+}
