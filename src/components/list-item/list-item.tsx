@@ -24,6 +24,7 @@ export const ListItem = ({ book }: Props) => {
 		<div className="Container">
 			<div className="Image">
 				<img
+					alt={book.title}
 					height={100}
 					src={book.frontCover}
 				/>

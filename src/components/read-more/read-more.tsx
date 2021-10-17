@@ -16,7 +16,7 @@ export const ReadMore = ({ text }: Props) => {
         <p className="Text">
             {isReadMore ? text.slice(0, 180) : text}
             <span onClick={toggleReadMore} className="read-or-hide">
-                {isReadMore ? "[...read more]" : "[ show less]"}
+                {isReadMore ? "[...read more]" : " [ show less]"}
             </span>
         </p>
     )
