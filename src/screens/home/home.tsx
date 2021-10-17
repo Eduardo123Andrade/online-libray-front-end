@@ -22,7 +22,8 @@ const DATA: Book[] = [
 export const Home = () => {
 
     const renderItem = (item: Book) => {
-        return <ListItem book={item}/>
+        const {id} = item
+        return <ListItem key={id} book={item}/>
     }
 
     return (

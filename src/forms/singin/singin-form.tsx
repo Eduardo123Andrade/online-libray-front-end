@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Card } from '../components/card/card'
-import './singing-form.css'
+import { Card } from '../../components/card/card'
+import './singin-form.css'
 
 
-export const Singing = () => {
+export const SingInForm = () => {
 	const [name, setName] = useState("")
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
@@ -17,11 +17,11 @@ export const Singing = () => {
 		const { value } = event.target
 		setPassword(value)
 	}
+
 	const onChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { value } = event.target
 		setName(value)
 	}
-
 
 	const onSubmit = () => {
 		console.log({ email, password, name })
@@ -61,20 +61,13 @@ export const Singing = () => {
 								onChange={onChangePassword}
 							/>
 						</label>
-
 					</div>
 					<div className="Button-Container">
-						<input
-							type="submit"
-							name="login"
-							value="login"
-						/>
 						<button
 							type="button"
-							value="cadastrar"
-							name="Cadastrar"
-						>cadastro</button>
-
+							value="Registrar"
+							name="Registrar"
+						>Registrar</button>
 					</div>
 				</form>
 			</Card>
