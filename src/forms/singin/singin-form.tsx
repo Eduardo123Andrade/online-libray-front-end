@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Card } from '../../components/card/card'
+import { usePostRequest } from '../../hooks/usePostRequest'
 import './singin-form.css'
 
 
@@ -7,6 +8,14 @@ export const SingInForm = () => {
 	const [name, setName] = useState("")
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
+
+	const { mutate } = usePostRequest('/auth/create-user', {
+		onSuccess: res => {
+			console.log(res)
+			console.log("Created User")
+		},
+		onError: console.log
+	})
 
 	const onChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { value } = event.target
@@ -24,7 +33,9 @@ export const SingInForm = () => {
 	}
 
 	const onSubmit = () => {
-		console.log({ email, password, name })
+		console.log('here')
+		mutate({email, password, name} as any)
+		// console.log({ email, password, name })
 	}
 
 	return (
@@ -67,6 +78,7 @@ export const SingInForm = () => {
 							type="button"
 							value="Registrar"
 							name="Registrar"
+							onClick={onSubmit}
 						>Registrar</button>
 					</div>
 				</form>
