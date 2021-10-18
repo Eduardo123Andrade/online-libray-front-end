@@ -21,7 +21,7 @@ interface Book {
 
 export const ListItem = ({ book }: Props) => {
 	return (
-		<div className="Container">
+		<div className="ListItemContainer">
 			<div className="Image">
 				<img
 					alt={book.title}

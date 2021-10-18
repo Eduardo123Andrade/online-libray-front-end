@@ -28,7 +28,7 @@ export const SingInForm = () => {
 	}
 
 	return (
-		<div className="Container">
+		<div className="SingInFormContainer">
 			<Card>
 				<form onSubmit={onSubmit}>
 					<div className="Input-Container">

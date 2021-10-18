@@ -22,7 +22,7 @@ export const LoginForm = () => {
 	}
 
 	return (
-		<div className="Container">
+		<div className="LoginFormContainer">
 			<Card>
 				<form onSubmit={onSubmit}>
 					<div className="Input-Container">
