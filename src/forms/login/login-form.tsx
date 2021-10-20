@@ -21,7 +21,7 @@ export const LoginForm = () => {
 	})
 
 	const goToHome = () => {
-		history.push('/home')
+		history.push('home')
 	}
 
 	const goToRegister = () => {

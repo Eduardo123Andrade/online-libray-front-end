@@ -36,7 +36,7 @@ export const SingInForm = () => {
 	}
 
 	const goToHome = () => {
-		history.push('/home')
+		history.push('home')
 	}
 
 	const onSubmit = () => {
