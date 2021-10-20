@@ -12,9 +12,7 @@ export const SingInForm = () => {
 	const history = useHistory()
 
 	const { mutate } = usePostRequest('/auth/create-user', {
-		onSuccess: res => {
-			console.log(res)
-			console.log("Created User")
+		onSuccess: () => {
 			goToHome()
 		},
 		onError: console.log
@@ -40,9 +38,7 @@ export const SingInForm = () => {
 	}
 
 	const onSubmit = () => {
-		console.log('here')
 		// mutate({email, password, name} as any)
-		// console.log({ email, password, name })
 		goToHome()
 	}
 

@@ -12,9 +12,7 @@ export const LoginForm = () => {
 
 
 	const { mutate } = usePostRequest('/auth/login', {
-		onSuccess: res => {
-			console.log("Valid user")
-			console.log({ res })
+		onSuccess: () => {
 			goToHome()
 		},
 		onError: console.log
@@ -39,8 +37,8 @@ export const LoginForm = () => {
 	}
 
 	const onSubmit = () => {
-		mutate({ email, password } as any)
-		// goToHome()
+		// mutate({ email, password } as any)
+		goToHome()
 	}
 
 	return (
