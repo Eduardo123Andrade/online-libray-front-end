@@ -1,11 +1,32 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router'
 import { Card } from '../../components/card/card'
+import { usePostRequest } from '../../hooks/usePostRequest'
 import './login-form.css'
 
 
 export const LoginForm = () => {
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
+	const history = useHistory()
+
+
+	const { mutate } = usePostRequest('/auth/login', {
+		onSuccess: res => {
+			console.log("Valid user")
+			console.log({ res })
+			goToHome()
+		},
+		onError: console.log
+	})
+
+	const goToHome = () => {
+		history.push('/home')
+	}
+
+	const goToRegister = () => {
+		history.push('register')
+	}
 
 	const onChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { value } = event.target
@@ -18,7 +39,8 @@ export const LoginForm = () => {
 	}
 
 	const onSubmit = () => {
-		console.log({ email, password })
+		mutate({ email, password } as any)
+		// goToHome()
 	}
 
 	return (
@@ -48,17 +70,18 @@ export const LoginForm = () => {
 
 					</div>
 					<div className="Button-Container">
-						<input
-							type="submit"
-							name="login"
-							value="login"
-						/>
 						<button
 							type="button"
-							value="cadastrar"
+							name="login"
+							value="login"
+							onClick={onSubmit}
+						>Login</button>
+						<button
+							type="button"
 							name="Cadastrar"
-						>cadastro</button>
-
+							value="Cadastro"
+							onClick={goToRegister}
+						>Cadastrar</button>
 					</div>
 				</form>
 			</Card>

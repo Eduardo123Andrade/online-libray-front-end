@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router'
 import { Card } from '../../components/card/card'
 import { usePostRequest } from '../../hooks/usePostRequest'
 import './singin-form.css'
@@ -8,11 +9,13 @@ export const SingInForm = () => {
 	const [name, setName] = useState("")
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
+	const history = useHistory()
 
 	const { mutate } = usePostRequest('/auth/create-user', {
 		onSuccess: res => {
 			console.log(res)
 			console.log("Created User")
+			goToHome()
 		},
 		onError: console.log
 	})
@@ -32,10 +35,15 @@ export const SingInForm = () => {
 		setName(value)
 	}
 
+	const goToHome = () => {
+		history.push('/home')
+	}
+
 	const onSubmit = () => {
 		console.log('here')
-		mutate({email, password, name} as any)
+		// mutate({email, password, name} as any)
 		// console.log({ email, password, name })
+		goToHome()
 	}
 
 	return (

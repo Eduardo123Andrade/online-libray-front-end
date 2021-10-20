@@ -15,10 +15,10 @@ export function App() {
     }} className="App" >
       <QueryClientProvider client={queryClient}>
         <APIProvider>
-          {/* <Routes /> */}
+          <Routes />
           {/* <Home /> */}
           {/* <Login /> */}
-          <SingIn />
+          {/* <SingIn /> */}
         </APIProvider>
 
       </QueryClientProvider>
