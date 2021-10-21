@@ -9,8 +9,6 @@ import './home.css'
 export const Home = () => {
     const {data: books} = useGetRequest('/book/list-books')
 
-    console.log({book: books[0]})
-
     const renderItem = (item: Book) => {
         const { id } = item
         return <ListItem key={id} book={item} />
