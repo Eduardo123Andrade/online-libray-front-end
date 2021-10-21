@@ -1,4 +1,5 @@
 import React from 'react'
+import { Book } from '../../types/book.type';
 import { ReadMore } from '../read-more/read-more'
 import "./list-item.css"
 
@@ -10,15 +11,6 @@ type Props = {
 	| JSX.Element[]
 };
 
-interface Book {
-	id: number
-	title: string
-	page: number
-	frontCover: string
-	description: string
-}
-
-
 export const ListItem = ({ book }: Props) => {
 	return (
 		<div className="ListItemContainer">
@@ -26,7 +18,8 @@ export const ListItem = ({ book }: Props) => {
 				<img
 					alt={book.title}
 					height={100}
-					src={book.frontCover}
+					width={100}
+					src={book.imagePath}
 				/>
 			</div>
 			<div className="About">
