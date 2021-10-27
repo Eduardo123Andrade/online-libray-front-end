@@ -37,7 +37,7 @@ export const LoginForm = () => {
 	}
 
 	const onSubmit = () => {
-		// mutate({ email, password } as any)
+		mutate({ email, password } as any)
 		goToHome()
 	}
 
@@ -45,7 +45,7 @@ export const LoginForm = () => {
 		<div className="LoginFormContainer">
 			<Card>
 				<form onSubmit={onSubmit}>
-					<div className="Input-Container">
+					<div className="InputContainer">
 						<label>
 							Email:
 							<input
