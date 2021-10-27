@@ -1,4 +1,4 @@
-import { AxiosRequestConfig, AxiosResponse } from "axios"
+import { AxiosRequestConfig } from "axios"
 import { useQuery } from "react-query"
 import { useApi } from "../api/useAPI"
 

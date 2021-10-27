@@ -1,11 +1,8 @@
-import BackgroundImage from '../../assets/library.jpeg';
-import './App.css';
-import { Home } from '../home/home';
-import { Login } from '../Auth/login/login';
-import { SingIn } from '../Auth/singin/singin';
-import { Routes } from '../../router/routers.router';
-import { APIProvider } from '../../api/APIProvider';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { APIProvider } from '../../api/APIProvider';
+import BackgroundImage from '../../assets/library.jpeg';
+import { Routes } from '../../router/routers.router';
+import './App.css';
 
 export function App() {
   const queryClient = new QueryClient()
@@ -16,9 +13,6 @@ export function App() {
       <QueryClientProvider client={queryClient}>
         <APIProvider>
           <Routes />
-          {/* <Home /> */}
-          {/* <Login /> */}
-          {/* <SingIn /> */}
         </APIProvider>
 
       </QueryClientProvider>
