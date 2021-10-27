@@ -38,7 +38,7 @@ export const SingInForm = () => {
 	}
 
 	const onSubmit = () => {
-		// mutate({email, password, name} as any)
+		mutate({email, password, name} as any)
 		goToHome()
 	}
 
