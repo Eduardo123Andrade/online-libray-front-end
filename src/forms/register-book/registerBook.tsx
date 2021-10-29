@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Card } from '../../components/card/card'
 import { usePostRequest } from '../../hooks/usePostRequest'
 import './registerBook.css'
-// import FormData from 'form-data'
 
 
 export const RegisterBookForm = () => {
@@ -10,7 +9,6 @@ export const RegisterBookForm = () => {
 	const [description, setDescription] = useState('')
 	const [page, setPage] = useState(0)
 	const [image, setImage] = useState<File>({} as File)
-	const [imageUrl, setImageUrl] = useState('')
 
 	const { mutate: onSubmitBook } = usePostRequest('/book/create-book', {
 		onSuccess: (res) => {
@@ -18,13 +16,6 @@ export const RegisterBookForm = () => {
 		},
 		onError: console.log
 	})
-
-	useEffect(() => {
-		// if (image) {
-		// setImageUrl(URL.createObjectURL(image))
-		// }
-	}, [image])
-
 
 	const onChangeTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { value } = event.target
@@ -102,7 +93,7 @@ export const RegisterBookForm = () => {
 								accept="image/png, image/jpeg"
 								onChange={onChangeImage}
 							/>
-							{!!image && <img width={100} height={100} src={image.name} />}
+							{!!image && <img width={100} height={100} alt={image.name} src={image.name} />}
 						</div>
 
 					</div>
