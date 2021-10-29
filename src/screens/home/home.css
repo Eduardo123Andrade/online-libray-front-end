@@ -3,7 +3,6 @@
     margin: auto;
     display: flex;
     justify-content: space-between;
-    background-color: blue;
     padding: 20px;
 }
 
@@ -12,17 +11,11 @@
 }
 
 .RegisterBookContainer {
-    /* margin-right: 10px; */
-    /* background-color: brown; */
-    justify-content: center;
-    align-items: center;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-top: 100px;
 }
 
 .ListBookContainer {
     width: 35vw;
-    height: 80vh;
     overflow: hidden;
     overflow-y: scroll;
 }

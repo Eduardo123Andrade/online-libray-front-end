@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card } from '../../components/card/card'
+import { Hello } from '../../components/hello/hello'
 import { ListItem } from '../../components/list-item/list-item'
 import { RegisterBookForm } from '../../forms/register-book/registerBook'
 import { useGetRequest } from '../../hooks/useGetRequest'
@@ -17,20 +18,26 @@ export const Home = () => {
 
 	return (
 		<div className="Home">
-		
-			<div className='RegisterBookContainer'>
+
+			<div>
 				<Card>
-					<RegisterBookForm />
+					<Hello />
 				</Card>
+
+				<div className='RegisterBookContainer'>
+					<Card>
+						<RegisterBookForm />
+					</Card>
+				</div>
 			</div>
-			
+
 			<div className='ListBookContainer'>
 				<Card>
-					
+
 					{books.map(renderItem)}
 				</Card>
 			</div>
-		
+
 		</div>
 	)
 }
