@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import { Card } from '../../components/card/card'
 import { usePostRequest } from '../../hooks/usePostRequest'
+import { useUser } from '../../hooks/useUser'
 import './login-form.css'
 
 
@@ -9,22 +10,26 @@ export const LoginForm = () => {
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 	const history = useHistory()
-
-
-	const { mutate } = usePostRequest('/auth/login', {
-		onSuccess: () => {
-			goToHome()
-		},
-		onError: console.log
-	})
+	const [{ isLogged }, { setUserData }] = useUser()
 
 	const goToHome = () => {
 		history.push('home')
 	}
 
-	const goToRegister = () => {
-		history.push('register')
-	}
+	useEffect(() => {
+		if (isLogged)
+			goToHome()
+	}, [isLogged, goToHome])
+
+	const { mutate } = usePostRequest('/auth/login', {
+		onSuccess: (response: any) => {
+			const { user } = response.data
+			setUserData(user)
+		},
+		onError: console.log
+	})
+
+	const goToRegister = () => history.push('register')
 
 	const onChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { value } = event.target
@@ -36,10 +41,7 @@ export const LoginForm = () => {
 		setPassword(value)
 	}
 
-	const onSubmit = () => {
-		mutate({ email, password } as any)
-		goToHome()
-	}
+	const onSubmit = () => mutate({ email, password } as any)
 
 	return (
 		<div className="LoginFormContainer">

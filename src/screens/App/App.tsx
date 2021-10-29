@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { APIProvider } from '../../api/APIProvider';
 import BackgroundImage from '../../assets/library.jpeg';
+import { UserProvider } from '../../provider/userProvider';
 import { Routes } from '../../router/routers.router';
 import './App.css';
 
@@ -11,10 +12,11 @@ export function App() {
       backgroundImage: `url(${BackgroundImage})`
     }} className="App" >
       <QueryClientProvider client={queryClient}>
-        <APIProvider>
-          <Routes />
-        </APIProvider>
-
+        <UserProvider>
+          <APIProvider>
+            <Routes />
+          </APIProvider>
+        </UserProvider>
       </QueryClientProvider>
     </div>
   );
