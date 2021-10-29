@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import { Card } from '../../components/card/card'
 import { usePostRequest } from '../../hooks/usePostRequest'
@@ -12,9 +12,9 @@ export const LoginForm = () => {
 	const history = useHistory()
 	const [{ isLogged }, { setUserData }] = useUser()
 
-	const goToHome = () => {
+	const goToHome = useCallback( () => {
 		history.push('home')
-	}
+	}, [history])
 
 	useEffect(() => {
 		if (isLogged)
