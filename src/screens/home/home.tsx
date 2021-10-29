@@ -31,12 +31,11 @@ export const Home = () => {
 				</div>
 			</div>
 
-			<div className='ListBookContainer'>
+			{	books.length && <div className='ListBookContainer'>
 				<Card>
-
 					{books.map(renderItem)}
 				</Card>
-			</div>
+			</div>}
 
 		</div>
 	)

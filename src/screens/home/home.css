@@ -16,6 +16,7 @@
 
 .ListBookContainer {
     width: 35vw;
+    height: 80vh;
     overflow: hidden;
     overflow-y: scroll;
 }
