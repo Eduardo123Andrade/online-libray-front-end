@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import { Card } from '../../components/card/card'
 import { usePostRequest } from '../../hooks/usePostRequest'
+import { useUser } from '../../hooks/useUser'
 import './singin-form.css'
 
 
@@ -9,11 +10,19 @@ export const SingInForm = () => {
 	const [name, setName] = useState("")
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
+	const [{ isLogged }, { setUserData }] = useUser()
 	const history = useHistory()
 
-	const { mutate } = usePostRequest('/auth/create-user', {
-		onSuccess: () => {
+	useEffect(() => {
+		if (isLogged)
 			goToHome()
+
+	}, [isLogged])
+
+	const { mutate } = usePostRequest('/auth/create-user', {
+		onSuccess: (response) => {
+			const { data: user } = response
+			setUserData(user)
 		},
 		onError: console.log
 	})
