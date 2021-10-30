@@ -1,5 +1,5 @@
 import React from 'react'
-import {SingInForm} from '../../../forms/singin/singin-form'
+import { SingInForm } from '../../../forms/singIn/singIn-form'
 import './singin.css'
 
 export const SingIn = () => {
