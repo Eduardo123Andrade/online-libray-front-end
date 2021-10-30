@@ -8,7 +8,7 @@ type Data = {
 }
 
 
-export const usePostRequest = (url: string, options?: UseMutationOptions<AxiosResponse, AxiosError, Data, any>) => {
+export const usePostRequest = (url: string, options?: UseMutationOptions<AxiosResponse<any, any>, AxiosError, Data, any>) => {
     const API = useApi()
 
     const mutationFunction: MutationFunction<AxiosResponse, Data> = ({data, config}: Data) => {

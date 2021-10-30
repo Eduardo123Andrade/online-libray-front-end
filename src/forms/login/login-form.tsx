@@ -22,7 +22,7 @@ export const LoginForm = () => {
 	}, [isLogged, goToHome])
 
 	const { mutate } = usePostRequest('/auth/login', {
-		onSuccess: (response: any) => {
+		onSuccess: (response) => {
 			const { user } = response.data
 			setUserData(user)
 		},
@@ -41,7 +41,7 @@ export const LoginForm = () => {
 		setPassword(value)
 	}
 
-	const onSubmit = () => mutate({ email, password } as any)
+	const onSubmit = () => mutate({ data: {email, password} })
 
 	return (
 		<div className="LoginFormContainer">
