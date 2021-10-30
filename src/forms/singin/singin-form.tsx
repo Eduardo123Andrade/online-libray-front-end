@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import { Card } from '../../components/card/card'
 import { usePostRequest } from '../../hooks/usePostRequest'
@@ -13,11 +13,15 @@ export const SingInForm = () => {
 	const [{ isLogged }, { setUserData }] = useUser()
 	const history = useHistory()
 
+	const goToHome = useCallback(() => {
+		history.push('home')
+	}, [history])
+
 	useEffect(() => {
 		if (isLogged)
 			goToHome()
 
-	}, [isLogged])
+	}, [isLogged, goToHome])
 
 	const { mutate } = usePostRequest('/auth/create-user', {
 		onSuccess: (response) => {
@@ -40,10 +44,6 @@ export const SingInForm = () => {
 	const onChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { value } = event.target
 		setName(value)
-	}
-
-	const goToHome = () => {
-		history.push('home')
 	}
 
 	const onSubmit = () => {
