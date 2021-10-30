@@ -12,7 +12,7 @@ export const LoginForm = () => {
 	const history = useHistory()
 	const [{ isLogged }, { setUserData }] = useUser()
 
-	const goToHome = useCallback( () => {
+	const goToHome = useCallback(() => {
 		history.push('home')
 	}, [history])
 
@@ -23,7 +23,7 @@ export const LoginForm = () => {
 
 	const { mutate } = usePostRequest('/auth/login', {
 		onSuccess: (response) => {
-			const { user } = response.data
+			const { data: user } = response
 			setUserData(user)
 		},
 		onError: console.log
@@ -41,7 +41,7 @@ export const LoginForm = () => {
 		setPassword(value)
 	}
 
-	const onSubmit = () => mutate({ data: {email, password} })
+	const onSubmit = () => mutate({ data: { email, password } })
 
 	return (
 		<div className="LoginFormContainer">
