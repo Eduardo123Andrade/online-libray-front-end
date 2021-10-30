@@ -1,3 +1,4 @@
+import FormData from 'form-data'
 import React, { useState } from 'react'
 import { Card } from '../../components/card/card'
 import { usePostRequest } from '../../hooks/usePostRequest'
@@ -9,6 +10,7 @@ export const RegisterBookForm = () => {
 	const [description, setDescription] = useState('')
 	const [page, setPage] = useState(0)
 	const [image, setImage] = useState<File>({} as File)
+	const [url, setUrl] = useState('')
 
 	const { mutate: onSubmitBook } = usePostRequest('/book/create-book', {
 		onSuccess: (res) => {
@@ -37,11 +39,23 @@ export const RegisterBookForm = () => {
 		if (files) {
 			const file = files[0]
 			setImage(file)
+			setUrl(URL.createObjectURL(file))
 		}
 	}
 
-	const onSubmit = () => {
-		onSubmitBook({ title, description, page } as any)
+	const onSubmit = async () => {
+		const data = new FormData()
+
+		data.append('image', image, image.name)
+		data.append('title', title)
+		data.append('description', description)
+		data.append('page', page)
+
+		const config = {
+			headers: { 'content-type': 'multipart/form-data' }
+		}
+
+		onSubmitBook({ data, config })
 	}
 
 	return (
@@ -93,7 +107,7 @@ export const RegisterBookForm = () => {
 								accept="image/png, image/jpeg"
 								onChange={onChangeImage}
 							/>
-							{!!image && <img width={100} height={100} alt={image.name} src={image.name} />}
+							{!!image && <img width={100} height={100} alt={image.name} src={url} />}
 						</div>
 
 					</div>
