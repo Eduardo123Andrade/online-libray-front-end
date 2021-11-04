@@ -4,7 +4,6 @@ import './login.css'
 
 
 export const Login = () => {
-    console.log("Login")
     return (
         <div className="Login">
             <LoginForm />
